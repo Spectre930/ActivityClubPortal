@@ -1,0 +1,59 @@
+﻿@model ActivityClubPortal.API.Resources.LookupResource
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    <h2 class="m-0">Create Lookup</h2>
+                </div>
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
+                        <input asp-for="Id" hidden class="form-control" value="0" />
+                        <div class="border p-3 mt-4 row bg-light rounded">
+                            <div class="row pb-2">
+                                <h2 class="bg-success rounded text-white">Create Lookup</h2>
+                                <hr />
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label asp-for="Code">Code</label>
+                                <input asp-for="Code" class="form-control" />
+                                <span asp-validation-for="Code" class="text-danger"></span>
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label asp-for="Name">Name</label>
+                                <input asp-for="Name" class="form-control" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label asp-for="Orders">Orders</label>
+                                <input asp-for="Orders" class="form-control" />
+                                <span asp-validation-for="Orders" class="text-danger"></span>
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label asp-for="ImageUrl"></label>
+                                <input type="file" id="uploadBox" name="file" class="form-control" />
+                            </div>
+                            @if (ViewBag.Message != null)
+                            {
+                                <div class="alert  alert-danger alert-dismissible fade show" style="font-size:smaller; width:60% ;" role="alert">
+                                    @ViewBag.Message
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            }
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-success" style="width:150px">Create</button>
+                                <a asp-controller="UserLookups" asp-action="Index" class="btn btn-secondary" style="width:150px">
+                                    Back to List
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

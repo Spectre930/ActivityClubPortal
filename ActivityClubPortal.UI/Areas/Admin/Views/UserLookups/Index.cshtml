@@ -1,0 +1,67 @@
+﻿@model IEnumerable<ActivityClubPortal.API.Resources.LookupResource>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    <h2 class="m-0">Lookup List</h2>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-2">
+                        <div class="col-md-6">
+                            <h4>Create New Lookup</h4>
+                            <!-- Adjust the controller and action based on your setup -->
+                            <a asp-controller="UserLookups" asp-action="Create" class="btn btn-success">
+                                <i class="bi bi-plus-circle"></i> Create New Lookup
+                            </a>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead class="table-secondary">
+                                <tr>
+                                    <th>Code</th>
+                                    <th>Name</th>
+                                    <th>Orders</th>
+                                    <th>Image</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var obj in Model)
+                                {
+                                    <tr>
+                                        <td>@obj.Code</td>
+                                        <td>@obj.Name</td>
+                                        <td>@obj.Orders</td>
+                                        <td>
+                                            @if (!string.IsNullOrEmpty(obj.ImageUrl))
+                                            {
+                                                <img src="@obj.ImageUrl" class="img-fluid rounded" alt="Image" />
+                                            }
+                                        </td>
+                                        <td>
+                                            <!-- Adjust the controller and action based on your setup -->
+                                            <a class="btn btn-warning btn-sm" asp-controller="UserLookups" asp-action="Edit" asp-route-id="@obj.Id">
+                                                <i class="bi bi-pencil-square"></i> Edit
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <!-- Adjust the controller and action based on your setup -->
+                                            <a class="btn btn-danger btn-sm" asp-controller="UserLookups" asp-action="Delete" asp-route-id="@obj.Id">
+                                                <i class="bi bi-x-circle"></i> Delete
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

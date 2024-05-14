@@ -1,0 +1,74 @@
+﻿@model ActivityClubPortal.API.Resources.Viewmodels.EventsPostVm
+
+<form method="post" asp-action="Edit" enctype="multipart/form-data">
+    <input asp-for="Event.Id" hidden class="form-control" />
+    <input asp-for="Event.ImageUrl" hidden class="form-control" />
+    <div class="border p-3 mt-4 row bg-light rounded">
+        <div class="row pb-2">
+            <h2 class="bg-warning rounded text-white">Update Event</h2>
+            <hr />
+        </div>
+        @*<div asp-validation-summary="All"></div>*@
+        <div class="mb-3 col-6">
+            <label asp-for="Event.Name">Name</label>
+            <input asp-for="Event.Name" class="form-control" />
+            <span asp-validation-for="Event.Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3 col-6">
+            <label asp-for="Event.Description">Description</label>
+            <textarea asp-for="Event.Description" class="form-control"></textarea>
+            <span asp-validation-for="Event.Description" class="text-danger"></span>
+        </div>
+        <div class="mb-3 col-6">
+            <label asp-for="Event.Destination">Destination</label>
+            <input asp-for="Event.Destination" class="form-control" />
+            <span asp-validation-for="Event.Destination" class="text-danger"></span>
+        </div>
+        <div class="mb-3 col-6">
+            <label asp-for="Event.Cost">Cost</label>
+            <input asp-for="Event.Cost" class="form-control" />
+            <span asp-validation-for="Event.Cost" class="text-danger"></span>
+        </div>
+        <div class="mb-3 col-6">
+            <label asp-for="Event.Status">Status</label>
+            <input type="Status" asp-for="Event.Status" class="form-control" />
+            <span asp-validation-for="Event.Status" class="text-danger"></span>
+        </div>
+        <div class="mb-3 col-6">
+            <label asp-for="Event.DateFrom">Date From</label>
+            <input type="date" asp-for="Event.DateFrom" class="form-control" />
+            <span asp-validation-for="Event.DateFrom" class="text-danger"></span>
+        </div>
+        <div class="mb-3 col-6">
+            <label asp-for="Event.DateTo">Date To</label>
+            <input type="date" asp-for="Event.DateTo" class="form-control" />
+            <span asp-validation-for="Event.DateTo" class="text-danger"></span>
+        </div>
+        <div class="mb-3 col-6">
+            <label asp-for="Event.LookupId">Lookup</label>
+            <select asp-for="Event.LookupId" asp-items="@Model.LookupList" class="form-select">
+                <option disabled selected>--Select Lookup--</option>
+            </select>
+            <span asp-validation-for="Event.LookupId" class="text-danger"></span>
+        </div>
+        <div class="mb-3 col-6">
+            <label asp-for="Event.ImageUrl"></label>
+            <input type="file" id="uploadBox" name="file" class="form-control" />
+        </div>
+        @if (ViewBag.Message != null)
+        {
+            <div class="alert  alert-danger alert-dismissible fade show" style="font-size:smaller; width:60% ;" role="alert">
+                @ViewBag.Message
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+        <div class="col-12">
+            <button type="submit" class="btn btn-warning" style="width:150px">Update</button>
+            <a asp-controller="Events" asp-action="Index" class="btn btn-secondary" style="width:150px">
+                Back to List
+            </a>
+        </div>
+    </div>
+</form>

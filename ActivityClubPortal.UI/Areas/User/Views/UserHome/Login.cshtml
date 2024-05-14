@@ -1,0 +1,21 @@
+﻿@{
+    Layout = "_Login";
+}
+@model ids.core.ViewModels.LoginVm
+
+<font size=200%><i class="fa fa-user-circle"></font></i>
+<div  class="container mt-1">
+    <h2 id="login_title">Log In </i></h2>
+    <form id="signInForm" method="post">
+        <i class="fas fa-envelope"></i><label for="email">Email</label>
+        <input asp-for="email" type="text" id="email" placeholder="Enter your email" required>
+
+        <i class="fas fa-lock"></i><label for="password">Password </label>
+        <input asp-for="password" type="password" id="password" placeholder="Enter your password" required>
+
+        <button type="submit" class="btn btn-info">Sign In <i class="fas fa-arrow-right" id="login_icon"></i></button>
+    </form>
+    <p class="mt-3">Don't have an account? <a asp-area="User" asp-controller="Member" asp-action="Register">Register</a></p>
+    <br />
+    <div id="alertBox" class="alert"></div>
+</div>

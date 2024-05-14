@@ -1,0 +1,63 @@
+﻿
+@model ActivityClubPortal.API.Resources.Viewmodels.EventsVm
+
+
+<div class="page-heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 header-text">
+                <h2 class="space-need">@Model.Event.Name <em>Event</em></h2>
+                <h6>Event Starts From <em>@Model.Event.DateFrom</em></h6>
+                <div class="main-content">
+                    <!-- Event Start Date -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="contest-details">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="top-content">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <span class="open">Status: @Model.Event.Status</span>
+                        </div>
+                        <div class="col-lg-8">
+                            <ul>
+                                <li><span>Cost:</span>@Model.Event.Cost</li>
+                                <li><span>Lookup:</span>@Model.Lookup.Name</li>
+                                <li><span>Destination:</span>@Model.Event.Destination</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="main-content">
+                    <h4>Description</h4>
+                    <h6>@Model.Event.Description</h6>
+                    <div class="main-button">
+                        <form asp-area="User" asp-controller="Member" asp-action="JoinEvent" asp-route-Id="@Model.Event.Id" method="post">
+                           @*  <input type="hidden" asp-for="@Model.Event.Id"/> *@
+                            <button type="submit" class="main-button" style=" width: 100%;
+        background-color: deepskyblue;
+        padding: 10px;
+        border: none;
+        border-radius: 4px;
+        color: #fff;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.3s;">
+                                Register
+                            </button>
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

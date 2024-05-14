@@ -1,0 +1,135 @@
+﻿
+@{
+    var token = Context.Session.GetString("Token");
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="author" content="templatemo">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <title>SnapX Photography by TemplateMo</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="~/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="~/assets/css/templatemo-snapx-photography.css">
+    <link rel="stylesheet" href="~/assets/css/owl.css">
+    <link rel="stylesheet" href="~/assets/css/animate.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+    <!-- to use icons from bootstrap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <!--
+
+    TemplateMo 576 SnapX Photography
+
+    https://templatemo.com/tm-576-snapx-photography
+
+    -->
+</head>
+
+<body>
+
+
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="index.html" class="logo">
+                            <img src="~/assets/images/ACP.png" alt="SnapX Photography Template">
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li><a asp-area="User" asp-controller="UserHome" asp-action="Index" class="active">Home</a></li>
+                            <li><a asp-area="User" asp-controller="Lookups" asp-action="Index">Lookups</a></li>
+                        </ul>
+                        @if( token != null)
+                        {
+                            <div class="border-button">
+                                <a asp-area="User" asp-controller="UserHome" asp-action="Logout" class="sign-in-up"> Logout</a>
+                               
+                            </div>
+                        }
+                        else{
+
+                        <div class="border-button">
+                            <a asp-area="User" asp-controller="UserHome" asp-action="Login" class="sign-in-up"><i class="fa fa-user"></i> Login</a>
+                        </div>
+                            <div class="border-button">
+                            <a asp-area="User" asp-controller="Member" asp-action="Register" class="sign-in-up"><i class="fa fa-user"></i> Signup</a>
+                        </div>
+                        }
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+    @RenderBody()
+
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5 class="text-info">About Us</h5>
+                    <p>Explore a world of exciting activities with ACP. Join our community today!</p>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="text-info">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">Home</a></li>
+                        <li><a href="#" class="text-white">Activities</a></li>
+                        <li><a href="#" class="text-white">About</a></li>
+                        <li><a href="#" class="text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="text-info">Contact Us</h5>
+                    <address>
+                        Lebanon<br>
+                        Aaylout,Mansourieh,Matn<br>
+                        Phone: 03777777<br>
+                        Email: <a href="mailto:ACP@gmail.com" class="text-info">ACP@gmail.com</a>
+                    </address>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col">
+                    <p class="text-center">&copy; 2023 ACP. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Scripts -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="~/assets/js/isotope.min.js"></script>
+    <script src="~/assets/js/owl-carousel.js"></script>
+
+    <script src="~/assets/js/tabs.js"></script>
+    <script src="~/assets/js/popup.js"></script>
+    <script src="~/assets/js/custom.js"></script>
+
+</body>
+</html>

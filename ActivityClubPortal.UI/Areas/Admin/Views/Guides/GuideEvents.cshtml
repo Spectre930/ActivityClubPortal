@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ActivityClubPortal.API.Resources.EventResource>
+
+div class="container mt-4">
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="text-primary">Guide Events</h1>
+
+</div>
+<div class="table-responsive">
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Destination</th>
+                <th>Date From</th>
+                <th>Date To</th>
+                <th>Cost</th>
+                <th>Status</th>
+                <th>Image</th>
+                <th>Members</th>
+                <th>Guides</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var obj in Model)
+            {
+                <tr>
+                    <td>@obj.Name</td>
+                    <td>@obj.Description</td>
+                    <td>@obj.Destination</td>
+                    <td>@obj.DateFrom</td>
+                    <td>@obj.DateTo</td>
+                    <td>@obj.Cost</td>
+                    <td>@obj.Status</td>
+                    <td>
+                        <img src="@obj.ImageUrl" class="img-fluid rounded" alt="Event Image" />
+                    </td>
+                    <td>
+                        <a class="btn btn-primary" asp-controller="Events" asp-action="EventMembers" asp-route-id="@obj.Id">View Members</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-primary" asp-controller="Events" asp-action="EventGuides" asp-route-id="@obj.Id">View Guides</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+</div>
+

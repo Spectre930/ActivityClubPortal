@@ -1,0 +1,132 @@
+﻿@model ActivityClubPortal.API.Resources.Viewmodels.HomeVm
+
+
+<!-- ***** Main Banner Area Start ***** -->
+<div class="main-banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="header-text">
+                    <h2>Enter a world of <em>Adventure</em> &amp; Amazing <em>Experience</em></h2>
+                    <p>Discover a world of activities at your fingertips. Dive into unique experiences, connect with like-minded individuals, and embark on memorable journeys with our curated selection of events and adventures. Your next exciting adventure awaits</p>
+                    <div class="buttons">
+                        <div class="big-border-button">
+                            <a asp-area="User" asp-controller="Lookups" asp-action="Index">Explore Activity Lookups</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ***** Main Banner Area End ***** -->
+<!-- ***** Events ***** -->
+<section class="featured-items" id="featured-items">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="owl-features owl-carousel" style="position: relative; z-index: 5;">
+                    @foreach (var (obj, index) in Model.Events.Select((eventObj, index) => (eventObj, index)))
+                    {
+                               
+                        <div class="item">
+                            <div class="thumb">
+
+                                <img src="@obj.ImageUrl" alt="">
+                                <a asp-area="User" asp-controller="Events" asp-action="Event" asp-route-Id="@obj.Id">
+                                <div class="hover-effect">
+                                    <div class="content">
+                                        <h4>@obj.Name</h4>
+                                        <ul>
+                                            <li><span>@obj.Description</span></li>
+                                            <li><span>Destination:</span>@obj.Destination</li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                                </a>
+                            </div>
+                        </div>
+
+                     }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ***** Lookups ***** -->
+<section class="popular-categories">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="section-heading">
+                    <h6>Our Lookups</h6>
+                    <h4>Check Out <em>Popular Lookups</em></h4>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="main-button">
+                    <a asp-area="User" asp-controller="Lookups" asp-action="Index">Discover All Lookups</a>
+                </div>
+            </div>
+             @foreach (var (obj, index) in Model.Lookups.Select((eventObj, index) => (eventObj, index)))
+                    {
+                <div class="col-lg-3 col-sm-6">
+                    <div class="popular-item">
+                        <div class="top-content">
+                            <div class="right">
+                                <h4>@obj.Name</h4>
+                            </div>
+                        </div>
+                        <div class="thumb">
+                            <img src="@obj.ImageUrl" alt="">
+                        </div>
+                    </div>
+                </div>
+                    }
+        </div>
+    </div>
+</section>
+
+<!-- ***** Guides ***** -->
+<section class="closed-contests">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-heading text-center">
+                    <h6>Our Guides</h6>
+                    <h4>See Our <em>Experienced Guides!</em></h4>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="owl-features owl-carousel" style="position: relative; z-index: 5;">
+                @foreach (var (obj, index) in Model.Guides.Select((eventObj, index) => (eventObj, index)))
+                    {
+                        
+                    <div class="item">
+                        <div class="closed-item">
+                            <div class="thumb">
+                                <a asp-area="User" asp-controller="Guides" asp-action="Guide" asp-route-Id="@obj.Id">
+                                        <img src="@obj.ImageUrl" alt="">
+                                    </a>
+                            </div>
+                            <div class="down-content">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <h4>@obj.FullName</h4>
+                                    </div>
+                                    <div class="col-6">
+                                            <h4 class="pics">@obj.Profession <br><span>Profession</span></h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

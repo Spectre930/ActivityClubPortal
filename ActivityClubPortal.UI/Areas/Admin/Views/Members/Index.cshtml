@@ -1,0 +1,127 @@
+﻿@model IEnumerable<ActivityClubPortal.API.Resources.MemberResource>
+
+<div class="container p-3 justirfy-content-center">
+    <div class="row justirfy-content-center">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="" style="color: #00BDFE;">Members List</h1>
+                        </div>
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item">
+                                    <a asp-controller="Members" asp-action="Create" class="btn btn-success">
+                                        <i class="bi bi-plus-circle"></i> &nbsp; Create New Member
+                                    </a>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div><!-- /.container-fluid -->
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="">
+                            <div class="card">
+                                <!-- /.card-header -->
+                                <div class="card-body">
+                                    <table id="example1" class="table table-bordered table-hover">
+                                        <thead>
+                                            <tr class="table-secondary">
+                                                <th>
+                                                    FullName
+                                                </th>
+                                                <th>
+                                                    Email
+                                                </th>
+                                                <th>
+                                                    Date Of Birth
+                                                </th>
+                                                <th>
+                                                    Joining Date
+                                                </th>
+                                                <th>
+                                                    Mobile Number
+                                                </th>
+                                                <th>
+                                                    Emergency Number
+                                                </th>
+                                                <th>
+                                                    Profession
+                                                </th>
+                                                <th>
+                                                    Nationality
+                                                </th>
+                                                <th> Events</th>
+                                                <th></th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody class="table-group-divider ">
+                                            @foreach (var obj in Model)
+                                            {
+                                                <tr class="">
+                                                    <td>
+                                                        @obj.FullName
+                                                    </td>
+                                                    <td>
+                                                        @obj.Email
+                                                    </td>
+                                                    <td>
+                                                        @obj.DateOfBirth
+                                                    </td>
+                                                    <td>
+                                                        @obj.JoiningDate
+                                                    </td>
+                                                    <td>
+                                                        @obj.MobileNumber
+                                                    </td>
+                                                    <td>
+                                                        @obj.EmergencyNumber
+                                                    </td>
+                                                    <td>
+                                                        @obj.Profession
+                                                    </td>
+                                                    <td>
+                                                        @obj.Nationality
+                                                    </td>
+                                                    <td>
+                                                        <a class="btn btn-outline-primary" asp-controller="Members" asp-action="MemberEvents" asp-route-id="@obj.Id">View Events</a>
+                                                    </td>
+                                                    <td>
+
+                                                        <a asp-controller="Members" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-outline-warning"><i class="bi bi-pencil-square"></i>Edit</a>
+                                                    </td>
+                                                    <td>
+                                                        <a asp-controller="Members" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-outline-danger"><i class="bi bi-x-circle"></i>Delete</a>
+
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.container-fluid -->
+            </section>
+            <!-- /.content -->
+        </div>
+
+    </div>
+</div>

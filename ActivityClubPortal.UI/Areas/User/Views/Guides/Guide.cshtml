@@ -1,0 +1,94 @@
+﻿@model ActivityClubPortal.API.Resources.Viewmodels.GuidesVm
+@{
+    var age =2024 - Model.guide.DateOfBirth.Year;
+}
+<div class="page-heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 header-text">
+                <h2>View <em>Guide's</em> details and their <em>Events</em></h2>
+                <p>Explore our Guides Page to meet our expert leaders. Click on a guide to view their guided event galleries, revealing memorable moments and experiences. Dive into the world of guided adventures!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="user-info">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="avatar">
+                    <img src="~/assets/images/user-avatar.jpg" alt="">
+                    <h4>@Model.guide.FullName</h4>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-4">
+                <div class="info">
+                    <h6>Events</h6>
+                    <h4>@Model.events.Count()</h4>
+                    <span>Guiding</span>
+                </div>
+            </div>
+            <div class="col-lg-4 col-4">
+                <div class="info">
+                    <h6>Profession</h6>
+                    <h4>@Model.guide.Profession</h4>
+                    <span class="text-white">gfdhfgj</span>
+                </div>
+            </div>
+            <div class="col-lg-4 col-4">
+                <div class="info">
+                    <h6>Age</h6>
+                    <h4>@age</h4>
+                    <span>Years</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="portfolio">
+    <div class="container">
+        <div class="row">
+             @foreach (var (obj, index) in Model.events.Select((eventObj, index) => (eventObj, index)))
+                    {
+                                
+            <div class="col-lg-4">
+                <div class="thumb">
+                        <img src="@obj.ImageUrl" alt="">
+                         <a asp-area="User" asp-controller="Events" asp-action="Event" asp-route-Id="@obj.Id">
+                    <div class="hover-effect">
+                        <div class="content">
+                                <h4>@obj.Name</h4>
+                                <span>Cost: <em>@obj.Cost</em></span>
+                            <span>Destination: <em>@obj.Destination</em></span>
+                        </div>
+                    </div>
+                        </a>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</section>
+
+<section class="contact-us">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-heading text-center">
+                    <h6>Contact This User</h6>
+                    <h4>Don't Be Shy <em></em> to contact the <em>Guide Now</em></h4>
+                </div>
+            </div>
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4">
+                <div class="info-item">
+                    <i class="fa fa-envelope"></i>
+                    <h4>Email Addresses</h4>
+                    <span><a href="#">@Model.guide.Email</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

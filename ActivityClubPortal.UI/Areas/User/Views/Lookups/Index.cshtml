@@ -1,0 +1,56 @@
+﻿@model IEnumerable<ActivityClubPortal.API.Resources.LookupResource> 
+
+@{
+    var lookupImages = new List<string> { "photo-video-01.jpg", "photo-video-02.jpg", "photo-video-03.jpg", "photo-video-04.jpg", "photo-video-05.jpg", "portfolio-01.jpg", "portfolio-02.jpg", "portfolio-04.jpg", "portfolio-06.jpg" };
+}
+<div class="page-heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 header-text">
+                <h2>Discover what's currently going on at <em>SnapX</em></h2>
+                <p>When you need Free CSS Templates, you just remember our website TemplateMo. We provide you best quality website templates at absolutely free of charge. No hidden cost involved.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<section class="photos-videos">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-heading text-center">
+                    <h6>Lookups At SnapX</h6>
+                    <h4>Our Featured <em>Lookups</em> At SnapX</h4>
+                </div>
+            </div>
+             @foreach (var (obj, index) in Model.Select((eventObj, index) => (eventObj, index)))
+                    {
+                               
+                <div class="col-lg-4">
+                    <div class="item">
+                        <div class="thumb">
+                            <img src="@obj.ImageUrl" alt="">
+                            <div class="top-content">
+                                <h4>@obj.Name</h4>
+                               
+                            </div>
+                        </div>
+                        <div class="down-content">
+                            <div class="row">
+                                <div class="col-7">
+                                    <h2>Code: @obj.Code</h2>
+                                </div>
+                                <div class="col-5">
+                                    <h6>Category: @obj.Orders</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+
